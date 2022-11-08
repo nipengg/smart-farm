@@ -43,7 +43,7 @@
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="#" alt="AquaponicLogo"
+            <img class="animation__wobble" src="{{ asset('AdminLTE/dist/img/tempLogo.svg') }}" alt="AquaponicLogo"
                 height="60" width="60">
         </div>
 
@@ -86,7 +86,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ url('/') }}" class="brand-link">
-                <img src="{{ asset('AdminLTE/dist/img/aquaponicLogo.png') }}" alt="Aquaponic Logo"
+                <img src="{{ asset('AdminLTE/dist/img/tempLogo.svg') }}" alt="Aquaponic Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light ml-3">SMART FARM</span>
             </a>
@@ -134,8 +134,8 @@
 
                         <li id="kolam" class="nav-item">
                             <a href="/lahan/" class="nav-link">
-                                <i class="nav-icon fas fa-tint"></i>
-                                <p>Kolam</p>
+                                <i class="nav-icon fas fa-spa"></i>
+                                <p>Lahan</p>
                             </a>
                         </li>
                         <li id="user" class="nav-item">
