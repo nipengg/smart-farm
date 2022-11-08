@@ -35,11 +35,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/{id}', [LahanController::class, 'destroy'])->name('lahan.destroy');
     });
 
-//     // Data Sensor
-//     Route::prefix('/datasensor')->group(function () {
-//         Route::get('/grafik', [GrafikController::class, 'grafik']);
-//         Route::get('/table', [GrafikController::class, 'table']);
-//     });
+    // Data Sensor
+    Route::prefix('/datasensor')->group(function () {
+        Route::get('/grafik', [GrafikController::class, 'grafik']);
+        Route::get('/table', [GrafikController::class, 'table']);
+    });
 });
 
 // // Admin Routes
