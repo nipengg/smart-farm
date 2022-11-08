@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kolam</h1>
+                    <h1 class="m-0">Lahan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Kolam</li>
+                        <li class="breadcrumb-item active">lahan</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,8 +27,8 @@
                     <div class="card">
                         <div class="card-header" id="formInput">
 
-                            <h3 class="card-title">Kolam</h3>
-                            <a type="button" href="{{ url('kolam/create') }}" class="btn btn-success float-right"><i
+                            {{-- <h3 class="card-title">Lahan</h3> --}}
+                            <a type="button" href="{{ url('lahan/create') }}" class="btn btn-success float-right"><i
                                     class="fas fa-plus"></i> Tambah
                                 Data</a>
 
@@ -54,10 +54,10 @@
                                             <td>{{ $lahan->area }} m</td>
                                             <td>{{ $lahan->desc }}</td>
                                             <td>{{ $lahan->created_at }}</td>
-                                            <td><a href="{{ route('kolam.edit', $lahan->id) }}" class="btn btn-info">
+                                            <td><a href="{{ route('lahan.edit', $lahan->id) }}" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
-                                                <form action="{{ route('kolam.destroy', $lahan->id) }}" method="POST"
+                                                <form action="{{ route('lahan.destroy', $lahan->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     <button class="btn btn-danger">
@@ -81,13 +81,13 @@
     </section>
 
     <script type="text/javascript">
-        document.getElementById("TopTitle").innerHTML = "Kolam";
-        document.getElementById("kolam").innerHTML =
-            '<a href="/kolam" class="nav-link active"><i class="nav-icon fas fa-tint"></i><p>Kolam</p></a>';
+        document.getElementById("TopTitle").innerHTML = "lahan";
+        document.getElementById("lahan").innerHTML =
+            '<a href="/lahan" class="nav-link active"><i class="nav-icon fas fa-tint"></i><p>lahan</p></a>';
 
         function noInputForm() {
             document.getElementById("formInput").innerHTML =
-                '<h3 class="card-title">Kolam</h3><button type="button" onclick="inputForm()" class="btn btn-success float-right"><i class="fas fa-plus"></i> Tambah Data</button>';
+                '<h3 class="card-title">lahan</h3><button type="button" onclick="inputForm()" class="btn btn-success float-right"><i class="fas fa-plus"></i> Tambah Data</button>';
         }
     </script>
     <script>
