@@ -138,6 +138,12 @@
                                 <p>Kolam</p>
                             </a>
                         </li>
+                        <li id="user" class="nav-item">
+                                <a href="/admin/user" class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>Manage User</p>
+                                </a>
+                            </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
