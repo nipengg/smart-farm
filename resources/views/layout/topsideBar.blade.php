@@ -131,9 +131,9 @@
                             </li>
                         </li>
 
-                        
+
                         <li id="kolam" class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/lahan/" class="nav-link">
                                 <i class="nav-icon fas fa-tint"></i>
                                 <p>Kolam</p>
                             </a>
