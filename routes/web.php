@@ -1,9 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\GrafikController;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\PoolController;
 use Illuminate\Support\Facades\Route;
 
 /*

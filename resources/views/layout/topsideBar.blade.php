@@ -56,7 +56,7 @@
                         class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ url('/') }}" id="TopTitle" class="nav-link">DASHBOARD</a>
+                <a href="{{ url('/') }}" id="TopTitle" class="nav-link">DASHBOARD SMART FARM</a>
             </li>
         </ul>
 
