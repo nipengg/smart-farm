@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\LahanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,21 +22,22 @@ Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/home', [MainController::class, 'index'])->name('home');
 
-//     // Pool URL
-//     Route::prefix('/kolam')->group(function () {
-//         Route::get('/', [PoolController::class, 'index'])->name('kolam');
-//         Route::get('/create', [PoolController::class, 'create']);
-//         Route::post('/store', [PoolController::class, 'store'])->name('kolam.store');
-//         Route::get('/edit/{id}', [PoolController::class, 'edit'])->name('kolam.edit');
-//         Route::post('/edit/{id}', [PoolController::class, 'update'])->name('kolam.update');
-//         Route::post('/{id}', [PoolController::class, 'destroy'])->name('kolam.destroy');
-//     });
 
-//     // Data Sensor
-//     Route::prefix('/datasensor')->group(function () {
-//         Route::get('/grafik', [GrafikController::class, 'grafik']);
-//         Route::get('/table', [GrafikController::class, 'table']);
-//     });
+//     // Lahan URL
+    Route::prefix('/lahan')->group(function () {
+        Route::get('/', [LahanController::class, 'index'])->name('lahan');
+        Route::get('/create', [LahanController::class, 'create']);
+        Route::post('/store', [LahanController::class, 'store'])->name('lahan.store');
+        Route::get('/edit/{id}', [LahanController::class, 'edit'])->name('lahan.edit');
+        Route::post('/edit/{id}', [LahanController::class, 'update'])->name('lahan.update');
+        Route::post('/{id}', [LahanController::class, 'destroy'])->name('lahan.destroy');
+    });
+
+    // Data Sensor
+    Route::prefix('/datasensor')->group(function () {
+        Route::get('/grafik', [GrafikController::class, 'grafik']);
+        Route::get('/table', [GrafikController::class, 'table']);
+    });
 });
 
 // // Admin Routes

@@ -9,7 +9,7 @@
     <!-- Font Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- overlayScrollbars -->
@@ -37,13 +37,13 @@
 
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" style="  font-family: 'Poppins', sans-serif;">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" style="  font-family: 'Open Sans', sans-serif;">
 
     <div class="wrapper">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="#" alt="AquaponicLogo"
+            <img class="animation__wobble" src="{{ asset('AdminLTE/dist/img/smart-farm-logo.png') }}" alt="AquaponicLogo"
                 height="60" width="60">
         </div>
 
@@ -86,7 +86,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="{{ url('/') }}" class="brand-link">
-                <img src="{{ asset('AdminLTE/dist/img/aquaponicLogo.png') }}" alt="Aquaponic Logo"
+                <img src="{{ asset('AdminLTE/dist/img/smart-farm-logo.png') }}" alt="smart-farm-logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light ml-3">SMART FARM</span>
             </a>
@@ -116,13 +116,13 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="/datasensor/table" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Tabel</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
+                                        <a href="/datasensor/grafik" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Grafik</p>
                                         </a>
@@ -131,13 +131,19 @@
                             </li>
                         </li>
 
-                        
+
                         <li id="kolam" class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tint"></i>
-                                <p>Kolam</p>
+                            <a href="/lahan/" class="nav-link">
+                                <i class="nav-icon fas fa-spa"></i>
+                                <p>Lahan</p>
                             </a>
                         </li>
+                        <li id="user" class="nav-item">
+                                <a href="/admin/user" class="nav-link">
+                                    <i class="nav-icon fas fa-user"></i>
+                                    <p>Manage User</p>
+                                </a>
+                            </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
