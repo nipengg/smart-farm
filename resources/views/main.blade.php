@@ -118,7 +118,7 @@
                                         Kelembapan Tanah
                                         <span class="float-right"><b>310</b>/400</span>
                                         <div class="progress progress-sm">
-                                            <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                            <div class="progress-bar bg-success" style="width: 75%"></div>
                                         </div>
                                     </div>
                                     <div class="progress-group"style="padding-bottom: 20px;">
