@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-// use App\Models\Pool;
-// use App\Models\PoolData;
+// use App\Models\Lahan;
+// use App\Models\LahanData;
 use Illuminate\Http\Request;
 
 class GrafikController extends Controller
@@ -14,48 +14,48 @@ class GrafikController extends Controller
 
 
 
-        // $kolam = Pool::all();
+        // $kolam = Lahan::all();
 
         // if ($from == NULL && $to == NULL) {
-        //     $ph = PoolData::select('ph_val', 'created_at')->where("pool_id", $id)->latest()->limit(20)->get();
-        //     $oxygen = PoolData::select('oxygen_val', 'created_at')->where("pool_id", $id)->latest()->limit(20)->get();
-        //     $humidity = PoolData::select('humidity_val', 'created_at')->where("pool_id", $id)->latest()->latest()->limit(20)->get();
-        //     $TDS = PoolData::select('tds_val', 'created_at')->where("pool_id", $id)->latest()->limit(20)->get();
-        //     $temperature = PoolData::select('temper_val', 'created_at')->where("pool_id", $id)->latest()->limit(20)->get();
-        //     $turbidity = PoolData::select('turbidities_val', 'created_at')->where("pool_id", $id)->latest()->limit(20)->get();
+        //     $ph = LahanData::select('ph_val', 'created_at')->where("Lahan_id", $id)->latest()->limit(20)->get();
+        //     $oxygen = LahanData::select('oxygen_val', 'created_at')->where("Lahan_id", $id)->latest()->limit(20)->get();
+        //     $humidity = LahanData::select('humidity_val', 'created_at')->where("Lahan_id", $id)->latest()->latest()->limit(20)->get();
+        //     $TDS = LahanData::select('tds_val', 'created_at')->where("Lahan_id", $id)->latest()->limit(20)->get();
+        //     $temperature = LahanData::select('temper_val', 'created_at')->where("Lahan_id", $id)->latest()->limit(20)->get();
+        //     $turbidity = LahanData::select('turbidities_val', 'created_at')->where("Lahan_id", $id)->latest()->limit(20)->get();
         // } else {
-        //     $ph = PoolData::select('ph_val', 'created_at')->where("pool_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
-        //     $oxygen = PoolData::select('oxygen_val', 'created_at')->where("pool_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
-        //     $humidity = PoolData::select('humidity_val', 'created_at')->where("pool_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
-        //     $TDS = PoolData::select('tds_val', 'created_at')->where("pool_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
-        //     $temperature = PoolData::select('temper_val', 'created_at')->where("pool_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
-        //     $turbidity = PoolData::select('turbidities_val', 'created_at')->where("pool_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $ph = LahanData::select('ph_val', 'created_at')->where("Lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $oxygen = LahanData::select('oxygen_val', 'created_at')->where("Lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $humidity = LahanData::select('humidity_val', 'created_at')->where("Lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $TDS = LahanData::select('tds_val', 'created_at')->where("Lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $temperature = LahanData::select('temper_val', 'created_at')->where("Lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $turbidity = LahanData::select('turbidities_val', 'created_at')->where("Lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
         // }
 
-        return view('dataSensor.datagrafik');
+        return view('datasensor.datagrafik');
     }
 
     public function table(Request $request)
     {
         // {
-        // $id = $request->pool;
+        // $id = $request->Lahan;
         // $from = $request->from;
         // $to = $request->to;
 
         // if ($id == NULL) {
-        //     $pool = Pool::all();
-        //     if ($pool->isEmpty()) {
+        //     $Lahan = Lahan::all();
+        //     if ($Lahan->isEmpty()) {
         //         $id = null;
         //     } else {
-        //         $first = $pool->first();
+        //         $first = $Lahan->first();
         //         $id = $first->id;
         //     }
         // }
 
         // if ($from == NULL && $to == NULL) {
-        //     $data = PoolData::where("pool_id", $id)->orderBy('created_at', 'desc')->get();
+        //     $data = LahanData::where("Lahan_id", $id)->orderBy('created_at', 'desc')->get();
         // } else {
-        //     $data = PoolData::where("pool_id", $id)->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $data = LahanData::where("Lahan_id", $id)->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
         // }
 
         // $count = $data->count();
@@ -63,8 +63,8 @@ class GrafikController extends Controller
         //     $count = 1;
         // }
 
-        // $kolam = Pool::all();
+        // $kolam = Lahan::all();
 
-        return view('dataSensor.datatable');
+        return view('datasensor.datatable');
     }
 }
