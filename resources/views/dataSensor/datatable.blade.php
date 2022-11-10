@@ -8,14 +8,9 @@
                 <div class="col-sm-6">
                     <h1 class="m-0">Table Data</h1>
                     <div class="form-group">
-                        <label class="mt-3">Pilih Kolam</label>
-                        <select id="pilihKolam" onchange="handleSelectChange()" class="form-control select2"
+                        <label class="mt-3">Pilih Lahan</label>
+                        <select id="pilihLahan" onchange="handleSelectChange()" class="form-control select2"
                             style="width: 100%;">
-
-                            {{-- @foreach ($kolam as $key)
-                                <option value="{{ $key->id }}" {{ $id == $key->id ? 'selected' : '' }}>
-                                    {{ $key->name }}</option>
-                            @endforeach --}}
 
                         </select>
                     </div>
@@ -37,7 +32,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <p class="card-title">Data Kolam</p>
+                            <p class="card-title">Data Lahan</p>
 
                                 <div class="container-fluid mt-5" style="padding:0 30px 0 30px">
                                     <div id="date_filter" class="row">
@@ -51,16 +46,6 @@
                                             Clear Filter</a>
                                     </div>
                                 </div>
-                                {{-- <div id="date_filter" class="row">
-                                    <input value="{{ $from }}" type="date" id="min" name="min"
-                                        class="form-control col-sm" /> &nbsp; &nbsp;
-                                    To &nbsp; &nbsp; <input value="{{ $to }}" type="date" id="max"
-                                        name="max" class="form-control col-sm" /> &nbsp; &nbsp;
-                                    <button onclick="handleDateChange()" type="button"
-                                        class="btn btn-success col-sm">Filter</button> &nbsp; &nbsp;
-                                    <button type="button" onclick="handleSelectChange()" class="btn btn-danger col-sm">
-                                        Clear Filter</a>
-                                </div> --}}
 
                         </div>
 
@@ -164,20 +149,20 @@
     </section>
     <!-- /.content -->
 
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         document.getElementById("TopTitle").innerHTML = "Data Table";
 
         function handleSelectChange(event) {
-            window.location.href = "{{ url('/datasensor/table/?pool=') }}" + $("#pilihKolam").val();
+            window.location.href = "{{ url('/datasensor/table/?pool=') }}" + $("#pilihLahan").val();
         }
 
         function handleDateChange(event) {
             var min = document.getElementById("min").value;
             var max = document.getElementById("max").value;
-            window.location.href = "{{ url('/datasensor/table/?pool=') }}" + $("#pilihKolam").val() + ('&from=') + min + (
+            window.location.href = "{{ url('/datasensor/table/?pool=') }}" + $("#pilihLahan").val() + ('&from=') + min + (
                 '&to=') + max;
         };
-    </script> --}}
+    </script>
     <script>
         $(function() {
             $("#example1").DataTable({
@@ -192,7 +177,7 @@
         });
 
         document.getElementById("menuAktif").innerHTML =
-            '<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"><li id="beranda" class="nav-item"><a href="/home" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Beranda</p></a></li><li class="nav-item menu-open"><a href="#" class="nav-link active"><i class="nav-icon fas fa-chart-pie"></i><p>Data Sensor<i class="right fas fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/datasensor/table" class="nav-link active"><i class="far fa-circle nav-icon"></i><p>Tabel</p></a></li><li class="nav-item"><a href="/datasensor/grafik" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Grafik</p></a></li></ul></li><li id="kolam" class="nav-item"><a href="/kolam" class="nav-link"><i class="nav-icon fas fa-tint"></i><p>Kolam</p></a></li>@if (Auth::user()->role == 'admin')<li id="user" class="nav-item"><a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Manage User</p></a></li>@endif</ul>';
+            '<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false"><li id="beranda" class="nav-item"><a href="/home" class="nav-link"><i class="nav-icon fas fa-tachometer-alt"></i><p>Beranda</p></a></li><li class="nav-item menu-open"><a href="#" class="nav-link active"><i class="nav-icon fas fa-chart-pie"></i><p>Data Sensor<i class="right fas fa-angle-left"></i></p></a><ul class="nav nav-treeview"><li class="nav-item"><a href="/datasensor/table" class="nav-link active"><i class="far fa-circle nav-icon"></i><p>Tabel</p></a></li><li class="nav-item"><a href="/datasensor/grafik" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Grafik</p></a></li></ul></li><li id="lahan" class="nav-item"><a href="/lahan" class="nav-link"><i class="nav-icon fas fa-tint"></i><p>Lahan</p></a></li>@if (Auth::user()->role == 'admin')<li id="user" class="nav-item"><a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user"></i><p>Manage User</p></a></li>@endif</ul>';
 
     </script>
 @endsection
