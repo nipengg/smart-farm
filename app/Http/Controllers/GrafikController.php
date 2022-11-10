@@ -9,7 +9,7 @@ class GrafikController extends Controller
 
     public function grafik()
     {
-        return view('dataSensor.datagrafik');
+        return view('datasensor.datagrafik');
     }
 
     public function table(Request $request)

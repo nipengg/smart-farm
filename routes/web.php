@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [MainController::class, 'index'])->name('home');
 
 
-`//     // Lahan URL
+//     // Lahan URL
     Route::prefix('/lahan')->group(function () {
         Route::get('/', [LahanController::class, 'index'])->name('lahan');
         Route::get('/create', [LahanController::class, 'create']);
@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}', [LahanController::class, 'edit'])->name('lahan.edit');
         Route::post('/edit/{id}', [LahanController::class, 'update'])->name('lahan.update');
         Route::post('/{id}', [LahanController::class, 'destroy'])->name('lahan.destroy');
-    });`
+    });
 
     // Data Sensor
     Route::prefix('/datasensor')->group(function () {
