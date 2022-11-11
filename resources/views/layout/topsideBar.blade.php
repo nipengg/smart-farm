@@ -37,50 +37,51 @@
 
 </head>
 
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" style="  font-family: 'Open Sans', sans-serif;">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed"
+    style="  font-family: 'Open Sans', sans-serif;">
 
     <div class="wrapper">
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="{{ asset('AdminLTE/dist/img/smart-farm-logo.png') }}" alt="AquaponicLogo"
-                height="60" width="60">
+            <img class="animation__wobble" src="{{ asset('AdminLTE/dist/img/smart-farm-logo.png') }}"
+                alt="AquaponicLogo" height="60" width="60">
         </div>
 
-       <!-- Navbar -->
-       <nav class="main-header navbar navbar-expand navbar-dark">
-        <!-- Left navbar links -->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                        class="fas fa-bars"></i></a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ url('/') }}" id="TopTitle" class="nav-link">DASHBOARD SMART FARM</a>
-            </li>
-        </ul>
-
-        <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <div class="info">
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#" class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-dark">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
-            </div>
-        </ul>
-    </nav>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="{{ url('/') }}" id="TopTitle" class="nav-link">DASHBOARD SMART FARM</a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <div class="info">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" data-toggle="dropdown" href="#">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a href="#" class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </nav>
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -104,29 +105,29 @@
                             </a>
                         </li>
                         <li id="datasensorAktif">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-chart-pie"></i>
-                                    <p>
-                                        Data Sensor
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="/datasensor/table" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Tabel</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/datasensor/grafik" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Grafik</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chart-pie"></i>
+                                <p>
+                                    Data Sensor
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/datasensor/table" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tabel</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/datasensor/grafik" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Grafik</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         </li>
 
 
@@ -136,12 +137,14 @@
                                 <p>Lahan</p>
                             </a>
                         </li>
-                        <li id="user" class="nav-item">
+                        @if (Auth::user()->role == 'admin')
+                            <li id="user" class="nav-item">
                                 <a href="/admin/user" class="nav-link">
                                     <i class="nav-icon fas fa-user"></i>
                                     <p>Manage User</p>
                                 </a>
                             </li>
+                        @endif
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
