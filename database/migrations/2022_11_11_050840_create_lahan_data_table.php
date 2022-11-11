@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('plots', function (Blueprint $table) {
+        Schema::create('lahan_data', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->longText('description');
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->unsignedBigInteger('lahan_id');
+            $table->integer('ph_val');
+            $table->integer('temp_val');
             $table->timestamps();
+            $table->foreign('lahan_id')->references('id')->on('lahans');
         });
     }
 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plots');
+        Schema::dropIfExists('lahan_data');
     }
 };

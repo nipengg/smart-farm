@@ -36,7 +36,6 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Phone</th>
                                         <th>Status</th>
                                         <th>Approval</th>
                                         <th>Created At</th>
@@ -49,7 +48,6 @@
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->phone }}</td>
                                             <td>{{ $user->role }}</td>
                                             <td>
                                                 @if ($user->role == 'inactive')

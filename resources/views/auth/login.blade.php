@@ -56,11 +56,6 @@
                             autocomplete="off" placeholder="Email" />
                     </div>
                     <div class="input-field">
-                        <i class="fas fa-phone"></i>
-                        <input id="phone" type="number" name="phone" value="{{ old('phone') }}" required
-                            autocomplete="off" autofocus placeholder="Phone Number" />
-                    </div>
-                    <div class="input-field">
                         <i class="fas fa-lock"></i>
                         <input id="password" type="password" name="password" required placeholder="Password" />
                     </div>
