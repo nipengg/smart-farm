@@ -11,10 +11,10 @@
                         <select id="pilihLahan" onchange="handleSelectChange()" class="form-control select2"
                             style="width: 100%;">
 
-                            {{-- @foreach ($lahan as $key)
+                            @foreach ($dataLahan as $key)
                                 <option {{ $id == $key->id ? 'selected' : '' }} value="{{ $key->id }}">
                                     {{ $key->name }}</option>
-                            @endforeach --}}
+                            @endforeach
 
                         </select>
                     </div>
@@ -31,9 +31,9 @@
 
     <div class="container-fluid" style="padding:0 30px 0 30px">
         <div id="date_filter" class="row">
-            <input value="#" type="date" id="min" name="min"
+            <input value="{{ $from }}" type="date" id="min" name="min"
                 class="form-control col-sm" /> &nbsp; &nbsp;
-            To &nbsp; &nbsp; <input value="#" type="date" id="max"
+            To &nbsp; &nbsp; <input value="{{ $to }}" type="date" id="max"
                 name="max" class="form-control col-sm" /> &nbsp; &nbsp;
             <button onclick="handleDateChange()" type="button"
                 class="btn btn-success col-sm">Filter</button> &nbsp; &nbsp;
@@ -59,7 +59,7 @@
             </div>
             <div class="card-body">
                 <div class="chart">
-                    <canvas id="lineChart"
+                    <canvas id="lineChartPh"
                         style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
             </div>
@@ -68,7 +68,32 @@
         <!-- /.card -->
     </div>
 
-   
+    <!-- TEMP CHART -->
+    <div class="container-fluid" style="padding: 20px; margin-bottom:-40px;">
+        <div class="card card-info">
+            <div class="card-header" style="background-color:#343A40;">
+                <h3 class="card-title">Temperature Chart</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="lineChartTemp"
+                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+
     <script type="text/javascript">
         document.getElementById("TopTitle").innerHTML = "Data Grafik";
     </script>
@@ -97,14 +122,12 @@
                 '&to=') + max;
         };
 
-
-
         //--------------
         //- PH CHART -
         //--------------
 
         // Get context with jQuery - using jQuery's .get() method.
-        var lineChartCanvasPh = $('#lineChart').get(0).getContext('2d')
+        var lineChartCanvasPh = $('#lineChartPh').get(0).getContext('2d')
 
         var lineChartDataPh = {
             labels: [1,2,3,4,5,6,7,8],
@@ -145,6 +168,55 @@
         new Chart(lineChartCanvasPh, {
             type: 'line',
             data: lineChartDataPh,
+            options: lineChartOptions
+        })
+
+        //--------------
+        //- PH CHART -
+        //--------------
+
+        // Get context with jQuery - using jQuery's .get() method.
+        var lineChartCanvasTemp = $('#lineChartTemp').get(0).getContext('2d')
+
+        var lineChartDataTemp = {
+            labels: [1,2,3,4,5,6,7,8],
+            datasets: [{
+                label: 'Temperature',
+                fill: false,
+                tension: 0,
+                backgroundColor: '#fca903',
+                borderColor: '#fca903',
+                pointRadius: true,
+                hoverRadius: 8,
+                borderWidth: 3,
+                data: [1,2,3,4,5,6,7,8]
+            }, ]
+        }
+
+        var lineChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                    }
+                }]
+            },
+        }
+
+        // This will get the first returned node in the jQuery collection.
+        new Chart(lineChartCanvasTemp, {
+            type: 'line',
+            data: lineChartDataTemp,
             options: lineChartOptions
         })
 

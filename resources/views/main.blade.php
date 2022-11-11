@@ -27,7 +27,7 @@
                         <div class="info-box-content">
                             <span class="info-box-text">Lahan</span>
                             <span class="info-box-number">
-                                <small>1</small>
+                                <small>{{ $lahan_count }}</small>
                             </span>
                         </div>
                         <!-- /.info-box-content -->
@@ -41,7 +41,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Jumlah Data Lahan</span>
-                            <span class="info-box-number">10</span>
+                            <span class="info-box-number">{{ $lahan_data_count }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -59,7 +59,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">User Count</span>
-                            <span class="info-box-number">3</span>
+                            <span class="info-box-number">{{ $users_count }}</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -90,7 +90,7 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <p class="text-center">
-                                        <strong> Date : 1 Jan, 2014 - 30 Jul, 2014</strong>
+                                        <strong>{{ $today->toDayDateTimeString() }}</strong>
                                     </p>
 
                                     <div class="chart">

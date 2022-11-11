@@ -29,9 +29,9 @@ class LahanController extends Controller
 
     public function edit($id)
     {
-        $Lahan = Lahan::findOrFail($id);
+        $lahan = Lahan::findOrFail($id);
 
-        return view('lahan.edit', ['Lahan' => $Lahan]);
+        return view('lahan.edit', ['lahan' => $lahan]);
     }
 
     public function update(Request $request, $id)

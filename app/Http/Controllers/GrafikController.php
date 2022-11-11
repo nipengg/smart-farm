@@ -9,9 +9,40 @@ use Illuminate\Http\Request;
 class GrafikController extends Controller
 {
 
-    public function grafik()
+    public function grafik(Request $request)
     {
-        return view('datasensor.datagrafik');
+        $id = $request->id;
+        $from = $request->from;
+        $to = $request->to;
+
+        if ($id == NULL) {
+            $dataLahan = Lahan::all();
+            if ($dataLahan->isEmpty()) {
+                $id = null;
+            } else {
+                $first = $dataLahan->first();
+                $id = $first->id;
+            }
+        }
+
+        $dataLahan = Lahan::all();
+
+        if ($from == NULL && $to == NULL) {
+            $ph = LahanData::select('ph_val', 'created_at')->where("lahan_id", $id)->latest()->limit(20)->get();
+            $temperature = LahanData::select('temp_val', 'created_at')->where("lahan_id", $id)->latest()->limit(20)->get();
+        } else {
+            $ph = LahanData::select('ph_val', 'created_at')->where("lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+            $temperature = LahanData::select('temp_val', 'created_at')->where("lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        }
+
+        return view('datasensor.datagrafik', [
+            'dataLahan' => $dataLahan,
+            'ph' => $ph,
+            'temperature' => $temperature,
+            'id' => $id,
+            'from' => $from,
+            'to' => $to,
+        ]);
     }
 
     public function table(Request $request)
