@@ -11,7 +11,10 @@
                         <label class="mt-3">Pilih Lahan</label>
                         <select id="pilihLahan" onchange="handleSelectChange()" class="form-control select2"
                             style="width: 100%;">
-
+                            @foreach ($dataLahan as $key)
+                                <option value="{{ $key->id }}" {{ $id == $key->id ? 'selected' : '' }}>
+                                    {{ $key->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div><!-- /.col -->
@@ -36,9 +39,9 @@
 
                                 <div class="container-fluid mt-5" style="padding:0 30px 0 30px">
                                     <div id="date_filter" class="row">
-                                        <input value="#" type="date" id="min" name="min"
+                                        <input value="{{ $from }}" type="date" id="min" name="min"
                                             class="form-control col-sm" /> &nbsp; &nbsp;
-                                        To &nbsp; &nbsp; <input value="#" type="date" id="max"
+                                        To &nbsp; &nbsp; <input value="{{ $to }}" type="date" id="max"
                                             name="max" class="form-control col-sm" /> &nbsp; &nbsp;
                                         <button onclick="handleDateChange()" type="button"
                                             class="btn btn-success col-sm">Filter</button> &nbsp; &nbsp;
@@ -57,81 +60,37 @@
                                         <th>Timestamp</th>
                                         <th>Suhu</th>
                                         <th>PH</th>
-                                        <th>Kekeruhan</th>
-                                        <th>Oksigen</th>
-                                        <th>Zat Terlarut</th>
-                                        <th>Oksidasi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($data as $item)
+                                    @foreach ($data as $item)
                                         <tr>
                                             <td>{{ $item->created_at }}</td>
-                                            <td>{{ $item->temper_val }}</td>
+                                            <td>{{ $item->temp_val }}</td>
                                             <td>{{ $item->ph_val }}</td>
-                                            <td>{{ $item->humidity_val }}</td>
-                                            <td>{{ $item->oxygen_val }}</td>
-                                            <td>{{ $item->tds_val }}</td>
-                                            <td>{{ $item->turbidities_val }}</td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <th>Average</th>
                                         <th>
                                             <?php
-                                            // $sum = 0;
-                                            // foreach ($data as $item) {
-                                            //     $sum = $sum + $item->temper_val;
-                                            // }
+                                            $sum = 0;
+                                            foreach ($data as $item) {
+                                                $sum = $sum + $item->temp_val;
+                                            }
                                             ?>
-                                            {{-- {{ number_format($sum / $count, 1) }} --}}
+                                            {{ number_format($sum / $count, 1) }}
                                         </th>
                                         <th>
                                             <?php
-                                            // $sum = 0;
-                                            // foreach ($data as $item) {
-                                            //     $sum = $sum + $item->ph_val;
-                                            // }
+                                            $sum = 0;
+                                            foreach ($data as $item) {
+                                                $sum = $sum + $item->ph_val;
+                                            }
                                             ?>
-                                            {{-- {{ number_format($sum / $count, 1) }} --}}
-                                        </th>
-                                        <th>
-                                            <?php
-                                            // $sum = 0;
-                                            // foreach ($data as $item) {
-                                            //     $sum = $sum + $item->humidity_val;
-                                            // }
-                                            ?>
-                                            {{-- {{ number_format($sum / $count, 1) }} --}}
-                                        </th>
-                                        <th>
-                                            <?php
-                                            // $sum = 0;
-                                            // foreach ($data as $item) {
-                                            //     $sum = $sum + $item->oxygen_val;
-                                            // }
-                                            ?>
-                                            {{-- {{ number_format($sum / $count, 1) }} --}}
-                                        </th>
-                                        <th>
-                                            <?php
-                                            // $sum = 0;
-                                            // foreach ($data as $item) {
-                                            //     $sum = $sum + $item->tds_val;
-                                            // }
-                                            ?>
-                                            {{-- {{ number_format($sum / $count, 1) }} --}}
-                                        </th>
-                                        <th>
-                                            <?php
-                                            // $sum = 0;
-                                            // foreach ($data as $item) {
-                                            //     $sum = $sum + $item->turbidities_val;
-                                            // }
-                                            ?>
-                                            {{-- {{ number_format($sum / $count, 1) }} --}}
+                                            {{ number_format($sum / $count, 1) }}
                                         </th>
                                     </tr>
                                 </tfoot>

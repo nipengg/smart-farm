@@ -36,6 +36,12 @@ class GrafikController extends Controller
             $data = LahanData::where("lahan_id", $id)->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
         }
 
+        $count = $data->count();
+        if ($count == NULL) {
+            $count = 1;
+        }
+
+        $dataLahan = Lahan::all();
 
         return view('dataSensor.datatable', [
             'dataLahan' => $dataLahan,
@@ -43,6 +49,7 @@ class GrafikController extends Controller
             'id' => $id,
             'from' => $from,
             'to' => $to,
+            'count' => $count,
         ]);
     }
 }
