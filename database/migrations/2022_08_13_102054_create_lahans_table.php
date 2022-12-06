@@ -17,6 +17,7 @@ class CreateLahansTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('area');
+            $table->boolean('aquator')->nullable();
             $table->string('desc')->nullable();
             $table->timestamps();
         });

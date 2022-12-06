@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('lahan_id');
             $table->integer('ph_val');
             $table->integer('temp_val');
+            $table->integer('hum_val');
             $table->timestamps();
             $table->foreign('lahan_id')->references('id')->on('lahans');
         });
