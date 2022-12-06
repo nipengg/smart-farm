@@ -13,5 +13,6 @@ class LahanData extends Model
         'lahan_id',
         'temp_val',
         'ph_val',
+        'hum_val',
     ];
 }
