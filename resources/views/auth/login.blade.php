@@ -39,7 +39,9 @@
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
+
                     <button type="submit" class="btn solid">Login</button>
+                        {{-- <p class="register" style="margin-top: 10px;">Don't have an account? <a href="">Register</a></p> --}}
                 </form>
 
                 <form method="POST" action="{{ route('register') }}" class="sign-up-form">
@@ -91,9 +93,14 @@
                     <p>
                         Silahkan klik tombol "Register" dibawah ini.
                     </p>
+                    {{-- button with register icon --}}
                     <button class="btn transparent" id="sign-up-btn">
-                        Register
+                        {{-- create icon --}}
+                        <i class="fas fa-user-plus"></i>
+                            Register
                     </button>
+
+
                 </div>
                 <img src="#" class="image" alt="" />
             </div>
@@ -104,6 +111,8 @@
                         Silahkan klik "Login" untuk masuk ke halaman utama website.
                     </p>
                     <button class="btn transparent" id="sign-in-btn">
+                        {{-- icon login --}}
+                        <i class="fas fa-sign-in-alt"></i>
                         Login
                     </button>
                 </div>
