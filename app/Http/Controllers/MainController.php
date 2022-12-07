@@ -19,6 +19,8 @@ class MainController extends Controller
 
         $lahan_data = LahanData::all();
         $lahan_data_count = $lahan_data->count();
+        //lahan_data yang baru di tambahkan
+        $lahan_data_last = LahanData::orderBy('id', 'desc')->first();
 
         $users = User::all();
         $users_count = $users->count();
@@ -31,7 +33,8 @@ class MainController extends Controller
             'lahan_data' => $lahan_data,
             'lahan_data_count' => $lahan_data_count,
             'users_count' => $users_count,
-            'today' => $today
+            'today' => $today,
+            'lahan_data_last' => $lahan_data_last,
         ]);
     }
 
