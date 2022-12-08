@@ -40,14 +40,18 @@ class GrafikController extends Controller
                 ->where("created_at", ">=", $from)
                 ->where("created_at", "<=", $to)
                 ->orderBy("created_at", "asc")
+                ->limit(20)
                 ->get();
         } else {
-            $data = LahanData::where('lahan_id', $id)->get();
+            $data = LahanData::where('lahan_id', $id)
+                ->orderBy('created_at', 'asc')
+                ->limit(20)
+                ->get();
         }
 
 
 
-        return view('datasensor.datagrafik', [
+        return view('dataSensor.datagrafik', [
             'dataLahan' => $dataLahan,
             // 'ph' => $ph,
             // 'temperature' => $temperature,
