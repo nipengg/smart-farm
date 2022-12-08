@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/dist/css/sidebar.css') }}">
 
     <script src="{{ asset('AdminLTE/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
@@ -53,11 +54,11 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" style="color: white"><i
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="{{ url('/') }}" id="TopTitle" class="nav-link">DASHBOARD SMART FARM</a>
+                    <a href="{{ url('/') }}" id="TopTitle" class="nav-link" style="color: white">DASHBOARD SMART FARM</a>
                 </li>
             </ul>
 
@@ -65,7 +66,7 @@
             <ul class="navbar-nav ml-auto">
                 <div class="info">
                     <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
+                        <a class="nav-link" data-toggle="dropdown" href="#" style="color: white">
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
@@ -84,12 +85,12 @@
         </nav>
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-style">
             <!-- Brand Logo -->
             <a href="{{ url('/') }}" class="brand-link">
                 <img src="{{ asset('AdminLTE/dist/img/smart-farm-logo.png') }}" alt="smart-farm-logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light ml-3">SMART FARM</span>
+                <span class="brand-text font-weight-light ml-3" style="color: white">SMART FARM</span>
             </a>
             <div style="height: 10px"></div>
             <!-- Sidebar -->

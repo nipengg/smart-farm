@@ -1,0 +1,30 @@
+.sidebar-style {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(315deg, rgba(0,0,0,1) 0%, rgba(21,120,166,1) 100%);
+    z-index: 100;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+}
+
+.nav-link2 {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(255, 255, 255);
+    transition: all 0.4s ease;
+    margin-top: 50px;
+  }
+
+  .header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: rgb(0,0,0);
+    background: linear-gradient(315deg, rgba(0,0,0,1) 0%, rgba(21,120,166,1) 100%);
+    border-bottom: 0px;
+  }
