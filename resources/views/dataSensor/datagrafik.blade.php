@@ -85,7 +85,32 @@
             </div>
             <div class="card-body">
                 <div class="chart">
-                    <canvas id="lineChartTemp"
+                    <canvas id="lineChartTemperature"
+                        style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- Humidity CHART -->
+    <div class="container-fluid" style="padding: 20px; margin-bottom:-40px;">
+        <div class="card card-info">
+            <div class="card-header" style="background-color:#343A40;">
+                <h3 class="card-title">Humidity Chart</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="chart">
+                    <canvas id="lineChartHumidity"
                         style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                 </div>
             </div>
@@ -122,6 +147,33 @@
                 '&to=') + max;
         };
 
+        // get data from controller json encode
+        var data = {!! json_encode($data) !!};
+
+        //copy array to new array
+        var temperatureArray = [];
+        for (var i = data.length - 1; i >= 0; i--) {
+            temperatureArray.push(data[i].temp_val);
+        }
+
+        var humidityArray = [];
+        for (var i = data.length - 1; i >= 0; i--) {
+            humidityArray.push(data[i].hum_val);
+        }
+
+        var phArray = [];
+        for (var i = data.length - 1; i >= 0; i--) {
+            phArray.push(data[i].ph_val);
+        }
+
+        var timeArray = [];
+        for (var i = data.length - 1; i >= 0; i--) {
+            var date = new Date(data[i].created_at);
+            var time = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" +
+                date.getMinutes() + ":" + date.getSeconds();
+            timeArray.push(time);
+        }
+
         //--------------
         //- PH CHART -
         //--------------
@@ -130,7 +182,7 @@
         var lineChartCanvasPh = $('#lineChartPh').get(0).getContext('2d')
 
         var lineChartDataPh = {
-            labels: [1,2,3,4,5,6,7,8],
+            labels: timeArray,
             datasets: [{
                 label: 'pH',
                 fill: false,
@@ -140,7 +192,7 @@
                 pointRadius: true,
                 hoverRadius: 8,
                 borderWidth: 3,
-                data: [1,2,3,4,5,6,7,8]
+                data: phArray
             }, ]
         }
 
@@ -172,14 +224,14 @@
         })
 
         //--------------
-        //- PH CHART -
+        //- Temperature CHART -
         //--------------
 
         // Get context with jQuery - using jQuery's .get() method.
-        var lineChartCanvasTemp = $('#lineChartTemp').get(0).getContext('2d')
+        var lineChartCanvasTemp = $('#lineChartTemperature').get(0).getContext('2d')
 
         var lineChartDataTemp = {
-            labels: [1,2,3,4,5,6,7,8],
+            labels: timeArray,
             datasets: [{
                 label: 'Temperature',
                 fill: false,
@@ -189,7 +241,7 @@
                 pointRadius: true,
                 hoverRadius: 8,
                 borderWidth: 3,
-                data: [1,2,3,4,5,6,7,8]
+                data: temperatureArray
             }, ]
         }
 
@@ -217,6 +269,55 @@
         new Chart(lineChartCanvasTemp, {
             type: 'line',
             data: lineChartDataTemp,
+            options: lineChartOptions
+        })
+
+        //--------------
+        //- Humidity CHART -
+        //--------------
+
+        // Get context with jQuery - using jQuery's .get() method.
+        var lineChartCanvasHum = $('#lineChartHumidity').get(0).getContext('2d')
+
+        var lineChartDataHum = {
+            labels: timeArray,
+            datasets: [{
+                label: 'Temperature',
+                fill: false,
+                tension: 0,
+                backgroundColor: '#fca903',
+                borderColor: '#fca903',
+                pointRadius: true,
+                hoverRadius: 8,
+                borderWidth: 3,
+                data: humidityArray
+            }, ]
+        }
+
+        var lineChartOptions = {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display: false,
+                    }
+                }],
+                yAxes: [{
+                    gridLines: {
+                        display: false,
+                    }
+                }]
+            },
+        }
+
+        // This will get the first returned node in the jQuery collection.
+        new Chart(lineChartCanvasHum, {
+            type: 'line',
+            data: lineChartDataHum,
             options: lineChartOptions
         })
 

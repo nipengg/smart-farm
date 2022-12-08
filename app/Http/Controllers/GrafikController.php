@@ -27,21 +27,34 @@ class GrafikController extends Controller
 
         $dataLahan = Lahan::all();
 
-        if ($from == NULL && $to == NULL) {
-            $ph = LahanData::select('ph_val', 'created_at')->where("lahan_id", $id)->latest()->limit(20)->get();
-            $temperature = LahanData::select('temp_val', 'created_at')->where("lahan_id", $id)->latest()->limit(20)->get();
+        // if ($from == NULL && $to == NULL) {
+        //     $ph = LahanData::select('ph_val', 'created_at')->where("lahan_id", $id)->latest()->limit(20)->get();
+        //     $temperature = LahanData::select('temp_val', 'created_at')->where("lahan_id", $id)->latest()->limit(20)->get();
+        // } else {
+        //     $ph = LahanData::select('ph_val', 'created_at')->where("lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        //     $temperature = LahanData::select('temp_val', 'created_at')->where("lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+        // }
+
+        if ($from != NULL && $to != NULL) {
+            $data = LahanData::where("lahan_id", "=", $id)
+                ->where("created_at", ">=", $from)
+                ->where("created_at", "<=", $to)
+                ->orderBy("created_at", "asc")
+                ->get();
         } else {
-            $ph = LahanData::select('ph_val', 'created_at')->where("lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
-            $temperature = LahanData::select('temp_val', 'created_at')->where("lahan_id", $id)->latest()->whereBetween("created_at", [$from, $to])->orderBy('created_at', 'desc')->get();
+            $data = LahanData::where('lahan_id', $id)->get();
         }
+
+
 
         return view('datasensor.datagrafik', [
             'dataLahan' => $dataLahan,
-            'ph' => $ph,
-            'temperature' => $temperature,
+            // 'ph' => $ph,
+            // 'temperature' => $temperature,
             'id' => $id,
             'from' => $from,
             'to' => $to,
+            'data' => $data,
         ]);
     }
 
