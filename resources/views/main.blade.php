@@ -209,11 +209,18 @@
             temperatureArray.push(temperature[i].temp_val);
         }
 
+        var timeArray = [];
+            for (var i = temperature.length - 1; i >= 0; i--) {
+                var date = new Date(temperature[i].created_at);
+                var time = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                timeArray.push(time);
+            }
+
         // Get context with jQuery - using jQuery's .get() method.
         var lineChartCanvasPh = $('#graphChart').get(0).getContext('2d')
 
         var lineChartDataPh = {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+            labels: timeArray,
             datasets: [{
                     label: 'pH',
                     fill: false,
