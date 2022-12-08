@@ -21,6 +21,9 @@ class MainController extends Controller
         $lahan_data_count = $lahan_data->count();
         //lahan_data yang baru di tambahkan
         $lahan_data_last = LahanData::orderBy('id', 'desc')->first();
+        $ph = LahanData::select('ph_val', 'created_at')->latest()->limit(20)->get();
+        $temperature = LahanData::select('temp_val', 'created_at')->latest()->limit(20)->get();
+        $humidity = LahanData::select('hum_val', 'created_at')->latest()->limit(20)->get();
 
         $users = User::all();
         $users_count = $users->count();
@@ -35,6 +38,9 @@ class MainController extends Controller
             'users_count' => $users_count,
             'today' => $today,
             'lahan_data_last' => $lahan_data_last,
+            'ph' => $ph,
+            'temperature' => $temperature,
+            'humidity' => $humidity,
         ]);
     }
 

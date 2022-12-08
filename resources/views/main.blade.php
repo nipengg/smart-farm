@@ -70,137 +70,187 @@
             <!-- /.row -->
 
             @foreach ($lahan as $lahan)
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="card-title">{{ $lahan->name }}</h5>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">{{ $lahan->name }}</h5>
 
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
 
-                                <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <p class="text-center">
-                                        <strong>{{ $today->toDayDateTimeString() }}</strong>
-                                    </p>
-
-                                    <div class="chart">
-                                        <!-- Sales Chart Canvas -->
-                                        <canvas id="graphChart" height="180" style="height: 180px; width: 100%;" width="100%" ></canvas>
-                                    </div>
-                                    <!-- /.chart-responsive -->
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                 </div>
-                                <!-- /.col -->
-                                <div class="col-md-4">
-                                    <p class="text-center">
-                                        <strong>Last Value</strong>
-                                    </p>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <p class="text-center">
+                                            <strong>{{ $today->toDayDateTimeString() }}</strong>
+                                        </p>
 
-                                    <div class="progress-group" style="padding-bottom: 20px;">
-                                        PH
-                                        <span class="float-right"><b>{{ $lahan_data_last->ph_val }}</b>/14</span>
-                                        @php
-                                        $phGauge = $lahan_data_last->ph_val * 100 / 14
-                                        @endphp
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar bg-primary" style="width: {{ $phGauge }}%"></div>
+                                        <div class="chart">
+                                            <!-- Sales Chart Canvas -->
+                                            <canvas id="graphChart" height="180" style="height: 180px; width: 100%;"
+                                                width="100%"></canvas>
+                                        </div>
+                                        <!-- /.chart-responsive -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-4">
+                                        <p class="text-center">
+                                            <strong>Last Value</strong>
+                                        </p>
+
+                                        <div class="progress-group" style="padding-bottom: 20px;">
+                                            PH
+                                            <span class="float-right"><b>{{ $lahan_data_last->ph_val }}</b>/14</span>
+                                            @php
+                                                $phGauge = ($lahan_data_last->ph_val * 100) / 14;
+                                            @endphp
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-primary" style="width: {{ $phGauge }}%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.progress-group -->
+
+                                        <div class="progress-group"style="padding-bottom: 20px;">
+                                            Kelembapan Tanah
+                                            <span class="float-right"><b>{{ $lahan_data_last->hum_val }}</b>/100</span>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 75%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-group"style="padding-bottom: 20px;">
+                                            Aquator
+                                            @if ($lahan->aquator_val == 1)
+                                                <span class="badge badge-success">On</span>
+                                            @else
+                                                <span class="badge badge-danger">Off</span>
+                                            @endif
+                                        </div>
+                                        <!-- /.progress-group -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <!-- ./card-body -->
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-sm-4 col-12">
+                                        <div class="description-block border-right">
+                                            <span class="description-percentage text-success"><i
+                                                    class="fas fa-caret-up"></i>
+                                                Good PH</span>
+                                            <h5 class="description-header">{{ $lahan_data_last->ph_val }}</h5>
+                                            <span class="description-text">Power of Hydrogen (pH)</span>
                                         </div>
                                     </div>
-                                    <!-- /.progress-group -->
-
-                                    <div class="progress-group"style="padding-bottom: 20px;">
-                                        Kelembapan Tanah
-                                        <span class="float-right"><b>{{ $lahan_data_last->hum_val}}</b>/100</span>
-                                        <div class="progress progress-sm">
-                                            <div class="progress-bar bg-success" style="width: 75%"></div>
+                                    <div class="col-sm-4 col-12">
+                                        <div class="description-block">
+                                            <span class="description-percentage text-success"><i
+                                                    class="fas fa-caret-up"></i>
+                                                Good Kelembapan Tanah</span>
+                                            <h5 class="description-header">{{ $lahan_data_last->hum_val }}</h5>
+                                            <span class="description-text">Kelembapan Tanah</span>
                                         </div>
                                     </div>
-                                    <div class="progress-group"style="padding-bottom: 20px;">
-                                        Aquator
-                                        @if ($lahan->aquator_val == 1)
-                                        <span class="badge badge-success">On</span>
-                                        @else
-                                        <span class="badge badge-danger">Off</span>
-                                        @endif
+                                    <div class="col-sm-4 col-12">
+                                        <div class="description-block border-left">
+                                            <span class="description-percentage text-success"><i
+                                                    class="fas fa-caret-up"></i>
+                                                Good Temperature</span>
+                                            <h5 class="description-header">{{ $lahan_data_last->temp_val }}°</h5>
+                                            <span class="description-text">Temperature</span>
+                                        </div>
                                     </div>
-                                    <!-- /.progress-group -->
                                 </div>
-                                <!-- /.col -->
+                                <!-- /.row -->
                             </div>
-                            <!-- /.row -->
+                            <!-- /.card-footer -->
                         </div>
-                        <!-- ./card-body -->
-                        <div class="card-footer">
-                            <div class="row">
-                                <div class="col-sm-4 col-12">
-                                    <div class="description-block border-right">
-                                        <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                            Good PH</span>
-                                        <h5 class="description-header">{{ $lahan_data_last->ph_val }}</h5>
-                                        <span class="description-text">Power of Hydrogen (pH)</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-12">
-                                    <div class="description-block">
-                                        <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                            Good Kelembapan Tanah</span>
-                                        <h5 class="description-header">{{ $lahan_data_last->hum_val }}</h5>
-                                        <span class="description-text">Kelembapan Tanah</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4 col-12">
-                                    <div class="description-block border-left">
-                                        <span class="description-percentage text-success"><i class="fas fa-caret-up"></i>
-                                            Good Temperature</span>
-                                        <h5 class="description-header">{{ $lahan_data_last->temp_val }}°</h5>
-                                        <span class="description-text">Temperature</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.card-footer -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.col -->
                 </div>
-                <!-- /.col -->
-            </div>
             @endforeach
         </div>
         <!--/. container-fluid -->
     </section>
 
 
-    @foreach ($lahan_data as $data)
     <script>
+
+        //get data from controller to javascript
+        var ph = {!! json_encode($ph) !!};
+        var humidity = {!! json_encode($humidity) !!};
+        var temperature = {!! json_encode($temperature) !!};
+
+        //copy array data to new array
+        var phArray = [];
+        for (var i = ph.length - 1; i >= 0; i--) {
+            phArray.push(ph[i].ph_val);
+        }
+
+        var humidityArray = [];
+        for (var i = humidity.length - 1; i >= 0; i--) {
+            humidityArray.push(humidity[i].hum_val);
+        }
+
+        var temperatureArray = [];
+        for (var i = temperature.length - 1; i >= 0; i--) {
+            temperatureArray.push(temperature[i].temp_val);
+        }
+
         // Get context with jQuery - using jQuery's .get() method.
         var lineChartCanvasPh = $('#graphChart').get(0).getContext('2d')
 
         var lineChartDataPh = {
             labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
             datasets: [{
-                label: 'pH',
-                fill: false,
-                tension: 0,
-                backgroundColor: '#007bff',
-                borderColor: '#007bff',
-                pointRadius: true,
-                hoverRadius: 8,
-                borderWidth: 3,
-                data: [{{ $data->ph_val }}]
-            }]
+                    label: 'pH',
+                    fill: false,
+                    tension: 0,
+                    backgroundColor: '#007bff',
+                    borderColor: '#007bff',
+                    pointRadius: true,
+                    hoverRadius: 8,
+                    borderWidth: 3,
+                    data: phArray
+                },
+                {
+                    label: 'Temperature',
+                    fill: false,
+                    tension: 0,
+                    backgroundColor: '#DC3545',
+                    borderColor: '#DC3545',
+                    pointRadius: true,
+                    hoverRadius: 8,
+                    borderWidth: 3,
+                    data: temperatureArray
+                },
+                {
+                    label: 'Humidity',
+                    fill: false,
+                    tension: 0,
+                    backgroundColor: '#28A745',
+                    borderColor: '#28A745',
+                    pointRadius: true,
+                    hoverRadius: 8,
+                    borderWidth: 3,
+                    data: humidityArray
+                }
+
+            ]
         }
-        
+
         var lineChartOptions = {
             maintainAspectRatio: false,
             responsive: true,
@@ -220,7 +270,7 @@
                 }]
             },
         }
-        
+
         // This will get the first returned node in the jQuery collection.
         new Chart(lineChartCanvasPh, {
             type: 'line',
@@ -230,12 +280,11 @@
     </script>
 
 
-<!-- Main Footer -->
-<footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href="#">Sinamlab</a>.</strong>
-    All rights reserved.
-</footer>
-</div>
-<!-- ./wrapper -->
-@endforeach
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <strong>Copyright &copy; 2022 <a href="#">Sinamlab</a>.</strong>
+        All rights reserved.
+    </footer>
+    </div>
+    <!-- ./wrapper -->
 @endsection
