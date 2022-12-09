@@ -173,7 +173,7 @@ sup {
 }
 
 a {
-  color: #007bff;
+  color: #4E9F3D;
   text-decoration: none;
   background-color: transparent
 }
@@ -35534,7 +35534,7 @@ a.disabled.mailbox-attachment-close {
 }
 
 .dark-mode .info-box {
-  background-color: #343a40;
+  background: linear-gradient(315deg, rgba(52,107,41,1) 0%, rgba(64,133,50,1) 100%);
   color: #fff
 }
 
