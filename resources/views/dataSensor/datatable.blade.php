@@ -60,6 +60,7 @@
                                         <th>Timestamp</th>
                                         <th>Suhu</th>
                                         <th>PH</th>
+                                        <th>Humidity</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,6 +69,8 @@
                                             <td>{{ $item->created_at }}</td>
                                             <td>{{ $item->temp_val }}</td>
                                             <td>{{ $item->ph_val }}</td>
+                                            <td>{{ $item->humidity_val }}</td>
+                                            {{-- <td>0</td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -92,6 +95,14 @@
                                             ?>
                                             {{ number_format($sum / $count, 1) }}
                                         </th>
+                                        <th>
+                                            <?php
+                                            $sum = 0;
+                                            foreach ($data as $item) {
+                                                $sum = $sum + $item->humidity_val;
+                                            }
+                                            ?>
+                                            {{ number_format($sum / $count, 1) }}
                                     </tr>
                                 </tfoot>
                             </table>
