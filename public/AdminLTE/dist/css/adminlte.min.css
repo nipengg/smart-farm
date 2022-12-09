@@ -4240,7 +4240,7 @@ input[type=submit].btn-block {
   min-height: 1.5rem;
   padding-left: 1.5rem;
   -webkit-print-color-adjust: exact;
-  color-adjust: exact
+  color-adjust: exact;
 }
 
 .custom-control-inline {
@@ -12247,11 +12247,11 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 }
 
 .layout-navbar-fixed .wrapper .sidebar-dark-gray-dark .brand-link:not([class*=navbar]) {
-  background-color: #343a40
+  background-color: #191A19
 }
 
 .layout-navbar-fixed .wrapper .sidebar-light-gray-dark .brand-link:not([class*=navbar]) {
-  background-color: #fff
+  background-color: #191A19
 }
 
 .layout-navbar-fixed .wrapper .main-header.border-bottom-0~.content-wrapper {
@@ -13279,7 +13279,7 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 .dark-mode {
-  background-color: #454d55 !important;
+  background-color: #191A19 !important;
   color: #fff
 }
 
@@ -13681,12 +13681,12 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
 }
 
 .dark-mode .main-footer {
-  background-color: #343a40;
-  border-color: #4b545c
+  background-color: #17161a;
+border-color: #17161a;
 }
 
 .dark-mode .content-wrapper {
-  background-color: #454d55;
+  background-color: #191A19;
   color: #fff
 }
 
