@@ -39,12 +39,12 @@ class GrafikController extends Controller
             $data = LahanData::where("lahan_id", "=", $id)
                 ->where("created_at", ">=", $from)
                 ->where("created_at", "<=", $to)
-                ->orderBy("created_at", "asc")
+                ->latest()
                 ->limit(20)
                 ->get();
         } else {
             $data = LahanData::where('lahan_id', $id)
-                ->orderBy('created_at', 'asc')
+                ->latest()
                 ->limit(20)
                 ->get();
         }
