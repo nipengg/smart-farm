@@ -69,7 +69,7 @@
                                             <td>{{ $item->created_at }}</td>
                                             <td>{{ $item->temp_val }}</td>
                                             <td>{{ $item->ph_val }}</td>
-                                            <td>{{ $item->humidity_val }}</td>
+                                            <td>{{ $item->hum_val }}</td>
                                             {{-- <td>0</td> --}}
                                         </tr>
                                     @endforeach
