@@ -13551,6 +13551,8 @@ body:not(.layout-fixed) .main-sidebar .sidebar {
   left: 0;
   position: fixed;
   top: 0;
+  background: linear-gradient(180deg, rgba(23,22,26,1) 14%, rgba(26,37,27,1) 45%, rgba(33,66,29,1) 69%, rgba(45,116,32,1) 100%);
+
 }
 
 .layout-fixed .control-sidebar {
